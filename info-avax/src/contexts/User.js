@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer, useMemo, useCallback, useEffect, useState } from 'react'
 import { useAllPairData, usePairData } from './PairData'
 import { client, 
-  // stakingClient  // by kroim
+  stakingClient  // by kroim
  } from '../apollo/client'
 import {
   USER_TRANSACTIONS,
@@ -486,38 +486,38 @@ export function useUserPositions(account) {
   return positions
 }
 // by kroim
-// export function useMiningPositions(account) {
-//   const [state, { updateMiningPositions }] = useUserContext()
-//   const allPairData = useAllPairData()
-//   const miningPositions = state?.[account]?.[MINING_POSITIONS_KEY]
+export function useMiningPositions(account) {
+  const [state, { updateMiningPositions }] = useUserContext()
+  const allPairData = useAllPairData()
+  const miningPositions = state?.[account]?.[MINING_POSITIONS_KEY]
 
-//   const snapshots = useUserSnapshots(account)
+  const snapshots = useUserSnapshots(account)
 
-//   useEffect(() => {
-//     async function fetchData(account) {
-//       try {
-//         let miningPositionData = []
-//         let result = await stakingClient.query({
-//           query: MINING_POSITIONS(account),
-//           fetchPolicy: 'no-cache',
-//         })
-//         if (!result?.data?.user?.miningPosition) {
-//           return
-//         }
-//         miningPositionData = result.data.user.miningPosition
-//         for (const miningPosition of miningPositionData) {
-//           const pairAddress = miningPosition.miningPool.pair.id
-//           miningPosition.pairData = allPairData[pairAddress]
-//         }
-//         updateMiningPositions(account, miningPositionData)
-//       } catch (e) {
-//         console.log(e)
-//       }
-//     }
+  useEffect(() => {
+    async function fetchData(account) {
+      try {
+        let miningPositionData = []
+        let result = await stakingClient.query({
+          query: MINING_POSITIONS(account),
+          fetchPolicy: 'no-cache',
+        })
+        if (!result?.data?.user?.miningPosition) {
+          return
+        }
+        miningPositionData = result.data.user.miningPosition
+        for (const miningPosition of miningPositionData) {
+          const pairAddress = miningPosition.miningPool.pair.id
+          miningPosition.pairData = allPairData[pairAddress]
+        }
+        updateMiningPositions(account, miningPositionData)
+      } catch (e) {
+        console.log(e)
+      }
+    }
 
-//     if (!miningPositions && account && snapshots) {
-//       fetchData(account)
-//     }
-//   }, [account, miningPositions, updateMiningPositions, snapshots, allPairData])
-//   return miningPositions
-// }
+    if (!miningPositions && account && snapshots) {
+      fetchData(account)
+    }
+  }, [account, miningPositions, updateMiningPositions, snapshots, allPairData])
+  return miningPositions
+}

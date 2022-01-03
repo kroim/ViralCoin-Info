@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react'
 import styled from 'styled-components'
 import { useUserTransactions, useUserPositions, 
-  // useMiningPositions  // by kroim
+  useMiningPositions  // by kroim
  } from '../contexts/User'
 import TxnList from '../components/TxnList'
 import Panel from '../components/Panel'
@@ -94,7 +94,7 @@ function AccountPage({ account }) {
   // get data for this account
   const transactions = useUserTransactions(account)
   const positions = useUserPositions(account)
-  // const miningPositions = useMiningPositions(account)  // by kroim
+  const miningPositions = useMiningPositions(account)  // by kroim
 
   // get data for user stats
   const transactionCount = transactions?.swaps?.length + transactions?.burns?.length + transactions?.mints?.length
@@ -318,7 +318,7 @@ function AccountPage({ account }) {
           <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
             Liquidity Mining Pools
           </TYPE.main>
-          {/* **** by kroim
+          {/* **** by kroim */}
           <Panel
             style={{
               marginTop: '1.5rem',
@@ -334,7 +334,7 @@ function AccountPage({ account }) {
               </AutoColumn>
             )}
           </Panel>
-          */}
+          
           <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
             Transactions
           </TYPE.main>{' '}

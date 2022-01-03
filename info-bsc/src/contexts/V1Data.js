@@ -1,4 +1,4 @@
-// import { v1Client } from '../apollo/client'
+import { v1Client } from '../apollo/client'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { getPercentChange, get2DayPercentChange } from '../utils'
@@ -7,7 +7,7 @@ import weekOfYear from 'dayjs/plugin/weekOfYear'
 
 dayjs.extend(utc)
 dayjs.extend(weekOfYear)
-/* ***** by kroim 
+/* ***** by kroim */
 export async function getV1Data() {
   dayjs.extend(utc)
 
@@ -56,5 +56,3 @@ export async function getV1Data() {
     console.log('error: ', err)
   }
 }
-
-*/

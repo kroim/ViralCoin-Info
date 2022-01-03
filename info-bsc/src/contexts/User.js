@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer, useMemo, useCallback, useEffect, useState } from 'react'
 import { useAllPairData, usePairData } from './PairData'
 import { client, 
-  // stakingClient // by kroim
+  stakingClient // by kroim
 } from '../apollo/client'
 import {
   USER_TRANSACTIONS,
@@ -485,7 +485,7 @@ export function useUserPositions(account) {
 
   return positions
 }
-/* ***** by kroim 
+/* ***** by kroim */
 export function useMiningPositions(account) {
   const [state, { updateMiningPositions }] = useUserContext()
   const allPairData = useAllPairData()
@@ -521,4 +521,3 @@ export function useMiningPositions(account) {
   }, [account, miningPositions, updateMiningPositions, snapshots, allPairData])
   return miningPositions
 }
-*/
