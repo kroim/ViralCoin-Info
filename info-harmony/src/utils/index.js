@@ -303,10 +303,10 @@ export const setThemeColor = (theme) => document.documentElement.style.setProper
 export const Big = (number) => new BigNumber(number)
 
 export const urls = {
-  showTransaction: (tx) => `https://etherscan.io/tx/${tx}/`,
-  showAddress: (address) => `https://www.etherscan.io/address/${address}/`,
-  showToken: (address) => `https://www.etherscan.io/token/${address}/`,
-  showBlock: (block) => `https://etherscan.io/block/${block}/`,
+  showTransaction: (tx) => `https://explorer.harmony.one/tx/${tx}/`,
+  showAddress: (address) => `https://explorer.harmony.one/address/${address}/`,
+  showToken: (address) => `https://explorer.harmony.one/token/${address}/`,
+  showBlock: (block) => `https://explorer.harmony.one/block/${block}/`,
 }
 
 export const formatTime = (unix) => {
