@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react'
 import styled from 'styled-components'
 import { useUserTransactions, useUserPositions, 
-  useMiningPositions  // by kroim
+  // useMiningPositions  // by kroim
  } from '../contexts/User'
 import TxnList from '../components/TxnList'
 import Panel from '../components/Panel'
@@ -94,7 +94,7 @@ function AccountPage({ account }) {
   // get data for this account
   const transactions = useUserTransactions(account)
   const positions = useUserPositions(account)
-  const miningPositions = useMiningPositions(account)  // by kroim
+  // const miningPositions = useMiningPositions(account)  // by kroim
 
   // get data for user stats
   const transactionCount = transactions?.swaps?.length + transactions?.burns?.length + transactions?.mints?.length
@@ -168,7 +168,7 @@ function AccountPage({ account }) {
         <RowBetween>
           <TYPE.body>
             <BasicLink to="/accounts">{'Accounts '}</BasicLink>→{' '}
-            <Link lineHeight={'145.23%'} href={'https://etherscan.io/address/' + account} target="_blank">
+            <Link lineHeight={'145.23%'} href={'https://bscscan.com/address/' + account} target="_blank">
               {' '}
               {account?.slice(0, 42)}{' '}
             </Link>
@@ -179,7 +179,7 @@ function AccountPage({ account }) {
           <RowBetween>
             <span>
               <TYPE.header fontSize={24}>{account?.slice(0, 6) + '...' + account?.slice(38, 42)}</TYPE.header>
-              <Link lineHeight={'145.23%'} href={'https://etherscan.io/address/' + account} target="_blank">
+              <Link lineHeight={'145.23%'} href={'https://bscscan.com/address/' + account} target="_blank">
                 <TYPE.main fontSize={14}>View on Etherscan</TYPE.main>
               </Link>
             </span>
@@ -318,7 +318,7 @@ function AccountPage({ account }) {
           <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
             Liquidity Mining Pools
           </TYPE.main>
-          {/* **** by kroim */}
+          {/* **** by kroim 
           <Panel
             style={{
               marginTop: '1.5rem',
@@ -334,7 +334,7 @@ function AccountPage({ account }) {
               </AutoColumn>
             )}
           </Panel>
-          
+          */}
           <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '3rem' }}>
             Transactions
           </TYPE.main>{' '}
